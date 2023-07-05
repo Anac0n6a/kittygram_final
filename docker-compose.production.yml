@@ -2,37 +2,31 @@
 version: '3'
 
 volumes:
-  pg_data_kitty_production:
-  static_kitty_production:
-  media_kitty_production:
+  pg_data_production:
+  static_volume:
 
+# Всё отличие — заменяем build на image и указываем, какой образ использо
 services:
   db:
     image: postgres:13.10
     env_file: .env
     volumes:
-      - pg_data_kitty_production:/var/lib/postgresql/data
+      - pg_data_production:/var/lib/postgresql/data
   backend:
     image: anac0n6a/kittygram_backend
     env_file: .env
     volumes:
-      - static_kitty_production:/backend_static/
-      - media_kitty_production:/app/media/cats/images/
-    depends_on:
-    - db
+      - static_volume:/backend_static
   frontend:
-    image: anac0n6a/kittygram_frontend  # Качаем с DockerHub
+    image: anac0n6a/kittygram_frontend  # Качаем с Docker H
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static_kitty_production:/frontend_static
+      - static_volume:/frontend_static
   gateway:
-    image: anac0n6a/kittygram_gateway  # Качаем с DockerHub
-    # env_file: .env
+    image: anac0n6a/kittygram_gateway  # Качаем с Docker Hu
+    env_file: .env
     volumes:
-      - static_kitty_production:/staticfiles/
-      - media_kitty_production:/media/cats/images/
+      - static_volume:/staticfiles/
     ports:
-      - 9000:80
-    depends_on:
-      - backend
+      - 9000:80 
