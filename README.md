@@ -2,7 +2,7 @@
 
 ## О проекте
 
-Проект реализует веб сайт kittigram по адресу: [https://catgram.hopto.org/signin](https://catgram.hopto.org/signin).
+Проект реализует веб сайт kittigram по адресу: [https://catgram.hopto.org](https://catgram.hopto.org).
 Kittygram - это социальная сеть, для любителей кошек. Пользователи могут добавлять фотографии своих котов и смотреть на
 котов, добавленных другими пользователями.
 В проекте настроены github actions для автотестов и деплоя на сервер.
@@ -100,3 +100,5 @@ dockerhub_username: ваш_логин_на_докерхабе
 - В корне проекта есть файл `kittygram_workflow.yml`.
 
 </details>
+
+Автор проекта Тимофей Шмаков Telegram - tim31560
